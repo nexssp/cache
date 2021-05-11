@@ -7,7 +7,8 @@ const fs = require("fs"),
   { extname } = require("path");
 
 function fileCachePath(p) {
-  return `${baseCachePath}/${p}`;
+  // __nexss_cache__ to keep other files safe during fg
+  return `${baseCachePath}/__nexss_cache__${p}`;
 }
 
 function recreateCache(v = true) {
@@ -33,14 +34,16 @@ const getFileUpdatedDate = (path) => {
   return stats.mtime;
 };
 
-const clean = (glob) => {
-  if (!glob) {
-    throw "specify glob for cache.clean";
-  }
-  const globToClean = `${baseCachePath}/${glob}`.replace(/\\/g, "/");
+const clean = (glob = "*") => {
+  const globToClean = `${baseCachePath}/__nexss_cache__${glob}`.replace(
+    /\\/g,
+    "/"
+  );
 
   const fg = require("fast-glob");
-  fg.sync(globToClean).forEach((file) => {
+  const files = fg.sync(globToClean);
+
+  files.forEach((file) => {
     fs.unlinkSync(file);
   });
 
@@ -49,6 +52,7 @@ const clean = (glob) => {
 
 const exists = (path, duration, readCacheContent) => {
   if (recreateCacheFlag) {
+    clean(path);
     return false;
   }
   if (duration) {
@@ -62,7 +66,7 @@ const exists = (path, duration, readCacheContent) => {
     }
 
     if (recreateCache) {
-      log.dy("Cache not found or is not valid.");
+      log.dy("Cache not found or is not valid:", pathToCache);
     } else if (fs.existsSync(pathToCache)) {
       if (!readCacheContent) {
         return true;
