@@ -5,6 +5,11 @@
 Check how old cache is with: `2 days`, `1d`, `5m`, `2y`, `3.5 hrs`, `1s`. See below for examples.
 
 ```js
+// New functionality. if you want recreate use as below:
+if (cliArgs.nocache) {
+  cache.recreateCache(); //set flag to recreate cache
+}
+
 const myCachePath = cache.setup();
 console.log(myCachePath); // Displays setup cache folder.
 
