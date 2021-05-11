@@ -1,12 +1,17 @@
 require("@nexssp/extend")("json");
 
 var baseCachePath = require("os").homedir() + "/.nexss/cache";
+var recreateCacheFlag = false;
 const log = require("@nexssp/logdebug");
 const fs = require("fs"),
   { extname } = require("path");
 
 function fileCachePath(p) {
   return `${baseCachePath}/${p}`;
+}
+
+function recreateCache(v = true) {
+  recreateCacheFlag = v;
 }
 
 function setup(cacheLocation, mkdir) {
@@ -43,6 +48,9 @@ const clean = (glob) => {
 };
 
 const exists = (path, duration, readCacheContent) => {
+  if (recreateCacheFlag) {
+    return false;
+  }
   if (duration) {
     const pathToCache = fileCachePath(path);
     if (fs.existsSync(pathToCache)) {
@@ -118,6 +126,7 @@ const del = (path, { sure } = {}) => {
 };
 
 module.exports = {
+  recreateCache,
   setup,
   del,
   fileCachePath,
