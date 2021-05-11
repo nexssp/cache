@@ -111,17 +111,8 @@ function readJSON(filename) {
   return data.JSONparse();
 }
 
-const del = (path, { sure } = {}) => {
+const del = (path) => {
   const pathToCache = fileCachePath(path);
-
-  if (!sure) {
-    log.warn(
-      `cache.del function needs to have second parameter as {sure:true} eg. cache.del("abc",{sure:true}) to allow for deletion.`,
-      `Check if ${pathToCache} is the right cache file to delete and add missing option. It's just for safe development.`
-    );
-    return;
-  }
-
   setImmediate(() => {
     if (fs.existsSync(pathToCache)) {
       return fs.unlinkSync(pathToCache);
