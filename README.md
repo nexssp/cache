@@ -2,6 +2,8 @@
 
 - Just EASY basic caching.. **(experimental version)**
 
+Check how old cache is with: `2 days`, `1d`, `5m`, `2y`, `3.5 hrs`, `1s`. See below for examples.
+
 ```js
 const myCachePath = cache.setup();
 console.log(myCachePath); // Displays setup cache folder.
