@@ -1,14 +1,14 @@
 {
   "name": "@nexssp/cache",
-  "description": "Cache, cache json, cache json with JS functions..",
-  "version": "1.0.4",
+  "description": "Cache, cache json with JS functions..",
+  "version": "1.0.5",
   "homepage": "https://nexss.com",
   "main": "src/cache.js",
   "files": [
     "src/**/*"
   ],
   "scripts": {
-    "test": "node bin/nexssp-cache clean"
+    "test": "node tests/test.js"
   },
   "author": {
     "name": "Marcin Polak",
@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@nexssp/ansi": "^1.1.1",
-    "@nexssp/extend": "^1.0.10",
+    "@nexssp/extend": "^1.0.15",
     "@nexssp/logdebug": "^1.0.15",
     "fast-glob": "^3.2.5",
     "minimist": "^1.2.5",

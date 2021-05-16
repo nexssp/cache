@@ -12,7 +12,7 @@ const cache = require("../src/cache");
 //   getFileUpdatedDate,
 
 const myCachePath = cache.setup();
-console.log(myCachePath);
+console.log("Cache Path", myCachePath);
 
 const cacheTestFile = "mycache1";
 console.log(cache.exists(cacheTestFile, "2d", true)); // true means read the cache content
