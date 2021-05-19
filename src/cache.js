@@ -123,16 +123,11 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
   const write = (writePath, content) => {
     check()
     const pathToCache = fileCachePath(writePath)
-    setImmediate(() => {
-      _fs.writeFileSync(pathToCache, content)
-    })
+    _fs.writeFileSync(pathToCache, content)
   }
 
   const writeJSON = (filename, content) => {
-    setImmediate(() => {
-      write(filename, content.JSONstringify())
-    })
-    console.log('done')
+    write(filename, content.JSONstringify())
   }
 
   const read = (path) => {
