@@ -21,9 +21,8 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
   let _path
   let _recreateCacheFlag = !!recreateCache // when flag is true, cache will be reacreated.
   let _cachePath
-
+  const { JSONstringify, JSONparse } = require('@nexssp/extend/json')
   function start() {
-    require('@nexssp/extend')('json', 'string')
     _log = require('@nexssp/logdebug')
     _fs = require('fs')
     _path = require('path')
@@ -112,7 +111,7 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
         resultToString = _fs.readFileSync(pathToCache)
         resultToString = resultToString.toString()
         if (_path.extname(pathToCache) === '.json') {
-          resultToString = resultToString.JSONparse()
+          resultToString = JSONparse(resultToString)
         }
 
         return resultToString
@@ -127,7 +126,7 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
   }
 
   const writeJSON = (filename, content) => {
-    write(filename, content.JSONstringify())
+    write(filename, JSONstringify(content))
   }
 
   const read = (path) => {
@@ -143,7 +142,7 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
 
   function readJSON(filename) {
     const data = read(filename)
-    return data.JSONparse()
+    return JSONparse(data)
   }
 
   const del = (path) => {
