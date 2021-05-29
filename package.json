@@ -1,7 +1,7 @@
 {
   "name": "@nexssp/cache",
   "description": "Cache, cache json with JS functions..",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "homepage": "https://nexss.com",
   "main": "src/cache.js",
   "files": [
