@@ -32,6 +32,7 @@ const cachePath = cache1.start()
 cache.writeJSON('mycache.json', { a: 1, b: 2, c3: 3 })
 
 // check if cache is not older then 1day)
+// true means that it will return the cache content with the exists method, otherwise true/false
 let cacheContent
 if ((cacheContent = cache.exists(cacheTestFile, '1d', true))) {
   // ok we use cache content: cacheContent

@@ -27,10 +27,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nexssp/test.git"
+    "url": "git+ssh://git@github.com/nexssp/cache.git"
   },
   "bugs": {
-    "url": "https://github.com/nexssp/test/issues",
+    "url": "https://github.com/nexssp/cache/issues",
     "email": "mapoart@gmail.com"
   },
   "license": "MIT",
