@@ -24,6 +24,8 @@ module.exports = { cache1, cache2 }
 ```
 
 ```js
+const cache = require('@nexssp/cache')
+const cache1 = cache({ auto: true })
 // program.js - they will only be initialised after cache.start()
 // cache.start() returns the path to the cache
 const cachePath = cache1.start()

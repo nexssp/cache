@@ -42,7 +42,9 @@ function nexssCache({ cachePath, recreateCache, bucket, auto } = {}) {
 
     if (!_fs.existsSync(_cachePath)) {
       if (_cachePath && !auto) {
-        _log.error(`${_cachePath} does not exist. To auto create use start()`)
+        _log.error(
+          `${_cachePath} does not exist. To auto create use cache({auto:true}) and cache1.start()`
+        )
       } else {
         _fs.mkdirSync(_cachePath, { recursive: true })
       }
